@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://xukilrey74xf"]
+[gd_scene load_steps=10 format=3 uid="uid://xukilrey74xf"]
 
+[ext_resource type="Script" path="res://mob.gd" id="1_qvha5"]
 [ext_resource type="Texture2D" uid="uid://dginivuxeypu1" path="res://art/enemyFlyingAlt_1.png" id="1_utpsn"]
 [ext_resource type="Texture2D" uid="uid://ceexkv5p8jf2k" path="res://art/enemyFlyingAlt_2.png" id="2_im8s7"]
 [ext_resource type="Texture2D" uid="uid://drvrsjdyq74b7" path="res://art/enemySwimming_1.png" id="3_q8asu"]
@@ -18,7 +19,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"flying",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -29,7 +30,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"swimming",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -40,18 +41,22 @@ animations = [{
 }],
 "loop": true,
 "name": &"walking",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a14ue"]
-radius = 50.0
-height = 138.0
+radius = 35.0
+height = 106.0
 
 [node name="mob" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_qvha5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_l5onw")
-animation = &"flying"
+animation = &"swimming"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
