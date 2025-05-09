@@ -48,7 +48,7 @@ position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_fmeso")
 animation = &"Idol"
 autoplay = "Idol"
-frame_progress = 0.344341
+frame_progress = 0.778104
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
