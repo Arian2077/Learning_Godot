@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2pfxxk0b2uky"]
+
+[ext_resource type="Texture2D" uid="uid://dvreu47jjdk6r" path="res://asset/sprites/fire.png" id="1_k3mcl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s7hjj"]
+radius = 3.0
+height = 10.0
+
+[node name="Bullet" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_k3mcl")
+region_enabled = true
+region_rect = Rect2(275.353, 100.083, 10.2879, 7.71594)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_s7hjj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
