@@ -12,8 +12,6 @@
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wj40p"]
 texture = ExtResource("2_s0vcf")
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
@@ -169,6 +167,8 @@ texture = ExtResource("2_s0vcf")
 3:15/0 = 0
 2:4/size_in_atlas = Vector2i(3, 3)
 2:4/0 = 0
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_b332x"]
 physics_layer_0/collision_layer = 1
@@ -176,6 +176,21 @@ sources/0 = SubResource("TileSetAtlasSource_wj40p")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8dega"]
 distance = -117.0
+
+[sub_resource type="Animation" id="Animation_2na7j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(786, -268)]
+}
 
 [sub_resource type="Animation" id="Animation_n66ft"]
 resource_name = "move"
@@ -194,7 +209,13 @@ tracks/0/keys = {
 "values": [Vector2(786, -268), Vector2(786, -60)]
 }
 
-[sub_resource type="Animation" id="Animation_2na7j"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fnf8o"]
+_data = {
+"RESET": SubResource("Animation_2na7j"),
+"move": SubResource("Animation_n66ft")
+}
+
+[sub_resource type="Animation" id="Animation_xgm0d"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -206,13 +227,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(786, -268)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fnf8o"]
-_data = {
-"RESET": SubResource("Animation_2na7j"),
-"move": SubResource("Animation_n66ft")
+"values": [Vector2(259, 21)]
 }
 
 [sub_resource type="Animation" id="Animation_qt804"]
@@ -230,21 +245,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(256, 21), Vector2(384, 21)]
-}
-
-[sub_resource type="Animation" id="Animation_xgm0d"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(259, 21)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1o4k0"]
@@ -394,14 +394,14 @@ theme_override_font_sizes/font_size = 8
 text = "Space to jump"
 
 [node name="Label2" type="Label" parent="labes"]
-offset_left = 114.0
-offset_top = 31.0
-offset_right = 200.0
-offset_bottom = 50.0
+offset_left = 116.0
+offset_top = 39.0
+offset_right = 204.0
+offset_bottom = 58.0
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("7_chbys")
 theme_override_font_sizes/font_size = 8
-text = "you might 
+text = "you might find
 some secrets"
 
 [node name="Label3" type="Label" parent="labes"]
