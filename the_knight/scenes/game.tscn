@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://5coetccnrvxv"]
+[gd_scene load_steps=20 format=3 uid="uid://5coetccnrvxv"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_gbkdm"]
 [ext_resource type="PackedScene" uid="uid://cueo8e2geukna" path="res://scenes/player.tscn" id="1_hjgmg"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c51s21on3tynn" path="res://scenes/killzone.tscn" id="5_igghs"]
 [ext_resource type="PackedScene" uid="uid://duqu5g82c0k3e" path="res://scenes/slime.tscn" id="6_3pmsb"]
 [ext_resource type="FontFile" uid="uid://bkas0lomgqa4x" path="res://asset/fonts/PixelOperator8.ttf" id="7_chbys"]
+[ext_resource type="PackedScene" uid="uid://oumau1r8qvhl" path="res://scenes/platform_2.tscn" id="8_nrj3e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wj40p"]
 texture = ExtResource("2_s0vcf")
@@ -177,44 +178,6 @@ sources/0 = SubResource("TileSetAtlasSource_wj40p")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8dega"]
 distance = -117.0
 
-[sub_resource type="Animation" id="Animation_2na7j"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(786, -268)]
-}
-
-[sub_resource type="Animation" id="Animation_n66ft"]
-resource_name = "move"
-length = 3.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(786, -268), Vector2(786, -60)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fnf8o"]
-_data = {
-"RESET": SubResource("Animation_2na7j"),
-"move": SubResource("Animation_n66ft")
-}
-
 [sub_resource type="Animation" id="Animation_xgm0d"]
 length = 0.001
 tracks/0/type = "value"
@@ -251,6 +214,44 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_xgm0d"),
 "move": SubResource("Animation_qt804")
+}
+
+[sub_resource type="Animation" id="Animation_bu1nc"]
+resource_name = "up&down"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(786, -267), Vector2(786, -37)]
+}
+
+[sub_resource type="Animation" id="Animation_uodve"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(786, -267)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qwvud"]
+_data = {
+"RESET": SubResource("Animation_uodve"),
+"up&down": SubResource("Animation_bu1nc")
 }
 
 [node name="Game" type="Node2D"]
@@ -358,15 +359,6 @@ position = Vector2(40, -54)
 [node name="Platform" parent="Plaforms" instance=ExtResource("3_0ibyc")]
 position = Vector2(-87, -42)
 
-[node name="Platform3" parent="Plaforms" instance=ExtResource("3_0ibyc")]
-position = Vector2(786, -268)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Plaforms/Platform3"]
-libraries = {
-"": SubResource("AnimationLibrary_fnf8o")
-}
-autoplay = "move"
-
 [node name="Platform2" parent="Plaforms" instance=ExtResource("3_0ibyc")]
 position = Vector2(259, 21)
 
@@ -375,6 +367,15 @@ libraries = {
 "": SubResource("AnimationLibrary_1o4k0")
 }
 autoplay = "move"
+
+[node name="Platform3" parent="Plaforms" instance=ExtResource("8_nrj3e")]
+position = Vector2(786, -267)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Plaforms/Platform3"]
+libraries = {
+"": SubResource("AnimationLibrary_qwvud")
+}
+autoplay = "up&down"
 
 [node name="Enemy" type="Node" parent="."]
 
@@ -413,6 +414,7 @@ size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("7_chbys")
 theme_override_font_sizes/font_size = 8
 text = "use platforms"
+metadata/_edit_use_anchors_ = true
 
 [node name="Label4" type="Label" parent="labes"]
 offset_left = 362.0
