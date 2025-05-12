@@ -4,6 +4,8 @@ extends CharacterBody2D
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var weapon: Sprite2D = $weapon_holder/Weapon
+
 
 
 func _physics_process(delta: float) -> void:
@@ -22,8 +24,11 @@ func _physics_process(delta: float) -> void:
 	# Flip the direction
 	if direction > 0:
 		animated_sprite.flip_h = false
+		weapon.flip_h = false
 	elif direction < 0:
 		animated_sprite.flip_h = true
+		weapon.flip_h = true
+		
 	
 	# Play animation
 	if is_on_floor():
@@ -33,11 +38,11 @@ func _physics_process(delta: float) -> void:
 				animated_sprite.play("run")
 	else:
 		animated_sprite.play("jump")
-
-	
+		
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
 
 	move_and_slide()
