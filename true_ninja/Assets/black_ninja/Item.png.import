@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drwm08lsjm13x"
-path="res://.godot/imported/Faceset.png-c3ac0699100913303276292a8bf8ea7b.ctex"
+uid="uid://bwqembjlrlw2n"
+path="res://.godot/imported/Item.png-ed9963898905ee9b7464e0b05cf1a718.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Actors/NinjaDark/Faceset.png"
-dest_files=["res://.godot/imported/Faceset.png-c3ac0699100913303276292a8bf8ea7b.ctex"]
+source_file="res://Assets/black_ninja/Item.png"
+dest_files=["res://.godot/imported/Item.png-ed9963898905ee9b7464e0b05cf1a718.ctex"]
 
 [params]
 

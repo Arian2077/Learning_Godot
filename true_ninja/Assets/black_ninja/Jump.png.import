@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw7jq8y1xkoin"
-path="res://.godot/imported/Special2.png-de785d4b85bfd13c1481052331ef7116.ctex"
+uid="uid://dsrmtvsghsxcd"
+path="res://.godot/imported/Jump.png-d68ea3ce7a4d8ae56db480c3a926473d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Actors/NinjaDark/SeparateAnim/Special2.png"
-dest_files=["res://.godot/imported/Special2.png-de785d4b85bfd13c1481052331ef7116.ctex"]
+source_file="res://Assets/black_ninja/Jump.png"
+dest_files=["res://.godot/imported/Jump.png-d68ea3ce7a4d8ae56db480c3a926473d.ctex"]
 
 [params]
 
