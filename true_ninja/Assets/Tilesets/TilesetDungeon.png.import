@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsrmtvsghsxcd"
-path="res://.godot/imported/Jump.png-d68ea3ce7a4d8ae56db480c3a926473d.ctex"
+uid="uid://bkvsf5ualbuc5"
+path="res://.godot/imported/TilesetDungeon.png-a7fa3447e212caed9e1abc0dcf859877.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/black_ninja/Jump.png"
-dest_files=["res://.godot/imported/Jump.png-d68ea3ce7a4d8ae56db480c3a926473d.ctex"]
+source_file="res://Assets/Tilesets/TilesetDungeon.png"
+dest_files=["res://.godot/imported/TilesetDungeon.png-a7fa3447e212caed9e1abc0dcf859877.ctex"]
 
 [params]
 

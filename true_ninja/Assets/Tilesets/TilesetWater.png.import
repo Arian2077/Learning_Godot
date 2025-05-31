@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwqembjlrlw2n"
-path="res://.godot/imported/Item.png-ed9963898905ee9b7464e0b05cf1a718.ctex"
+uid="uid://ct4et0m72oki3"
+path="res://.godot/imported/TilesetWater.png-83da2747f5d187c6192cf901ccc836a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/black_ninja/Item.png"
-dest_files=["res://.godot/imported/Item.png-ed9963898905ee9b7464e0b05cf1a718.ctex"]
+source_file="res://Assets/Tilesets/TilesetWater.png"
+dest_files=["res://.godot/imported/TilesetWater.png-83da2747f5d187c6192cf901ccc836a2.ctex"]
 
 [params]
 

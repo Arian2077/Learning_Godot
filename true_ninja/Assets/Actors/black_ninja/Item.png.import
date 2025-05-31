@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://u44rdav2xe5r"
-path="res://.godot/imported/Special2.png-c5e5c6cb305cd350cd981def36a7d45b.ctex"
+uid="uid://bwqembjlrlw2n"
+path="res://.godot/imported/Item.png-479454cbd8c640fb0582412f6b0d9d1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/black_ninja/Special2.png"
-dest_files=["res://.godot/imported/Special2.png-c5e5c6cb305cd350cd981def36a7d45b.ctex"]
+source_file="res://Assets/Actors/black_ninja/Item.png"
+dest_files=["res://.godot/imported/Item.png-479454cbd8c640fb0582412f6b0d9d1e.ctex"]
 
 [params]
 

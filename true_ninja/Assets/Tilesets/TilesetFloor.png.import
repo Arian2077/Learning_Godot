@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ceyh35xblmws1"
-path="res://.godot/imported/Idle.png-e7a064b5ded3f7249f4e5f5f62c96614.ctex"
+uid="uid://4q6flefer6oc"
+path="res://.godot/imported/TilesetFloor.png-b3df68cab023592af6bb5888deb5fefc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/black_ninja/Idle.png"
-dest_files=["res://.godot/imported/Idle.png-e7a064b5ded3f7249f4e5f5f62c96614.ctex"]
+source_file="res://Assets/Tilesets/TilesetFloor.png"
+dest_files=["res://.godot/imported/TilesetFloor.png-b3df68cab023592af6bb5888deb5fefc.ctex"]
 
 [params]
 
