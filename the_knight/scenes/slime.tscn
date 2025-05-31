@@ -40,10 +40,10 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6a1jy"]
-size = Vector2(12, 12)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vaqnq"]
+size = Vector2(12, 12.5)
 
-[node name="Slime" type="Node2D"]
+[node name="Slime" type="Node2D" groups=["slime"]]
 script = ExtResource("1_sc6p6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -56,8 +56,8 @@ frame_progress = 0.37677
 [node name="Killzone" parent="." instance=ExtResource("2_27doq")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(5, 6)
-shape = SubResource("RectangleShape2D_6a1jy")
+position = Vector2(5, 5.25)
+shape = SubResource("RectangleShape2D_vaqnq")
 
 [node name="ray_cast_right" type="RayCast2D" parent="."]
 position = Vector2(6, 6)
