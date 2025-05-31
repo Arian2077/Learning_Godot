@@ -208,6 +208,10 @@ z_index = 1
 collision_mask = 2
 script = ExtResource("1_ua4ut")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.75, 0.75)
+position_smoothing_enabled = true
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_21aib")
