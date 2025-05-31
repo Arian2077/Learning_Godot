@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cksiu5gst6fmp"
-path="res://.godot/imported/square_body.png-2aa482b43b298c3f012aa693d6d36954.ctex"
+uid="uid://baivpy8xpooau"
+path="res://.godot/imported/Mushroom-Stun.png-f71aec129ded01a64c54701a4dcd0cf5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/characters/happy_boo/square_body.png"
-dest_files=["res://.godot/imported/square_body.png-2aa482b43b298c3f012aa693d6d36954.ctex"]
+source_file="res://Assets/characters/Mushroom/Mushroom without VFX/Mushroom-Stun.png"
+dest_files=["res://.godot/imported/Mushroom-Stun.png-f71aec129ded01a64c54701a4dcd0cf5.ctex"]
 
 [params]
 

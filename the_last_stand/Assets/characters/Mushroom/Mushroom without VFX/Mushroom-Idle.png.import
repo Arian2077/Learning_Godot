@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cksiu5gst6fmp"
-path="res://.godot/imported/square_body.png-2aa482b43b298c3f012aa693d6d36954.ctex"
+uid="uid://cprdr64fkglr5"
+path="res://.godot/imported/Mushroom-Idle.png-4e0238744de752dfca57dc15015c8ed3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/characters/happy_boo/square_body.png"
-dest_files=["res://.godot/imported/square_body.png-2aa482b43b298c3f012aa693d6d36954.ctex"]
+source_file="res://Assets/characters/Mushroom/Mushroom without VFX/Mushroom-Idle.png"
+dest_files=["res://.godot/imported/Mushroom-Idle.png-4e0238744de752dfca57dc15015c8ed3.ctex"]
 
 [params]
 

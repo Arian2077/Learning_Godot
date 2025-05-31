@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://dl7lg22d7655o"]
+
+[ext_resource type="Script" path="res://Scenes/player.gd" id="1_t324r"]
+[ext_resource type="Texture2D" uid="uid://d35wg0kx0gcyq" path="res://Assets/characters/Mushroom/Mushroom with VFX/Mushroom-Idle.png" id="1_xkocn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjygo"]
+atlas = ExtResource("1_xkocn")
+region = Rect2(0, 32, 80, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grji5"]
+atlas = ExtResource("1_xkocn")
+region = Rect2(80, 32, 80, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyjp7"]
+atlas = ExtResource("1_xkocn")
+region = Rect2(160, 32, 80, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02swo"]
+atlas = ExtResource("1_xkocn")
+region = Rect2(240, 32, 80, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wvvw"]
+atlas = ExtResource("1_xkocn")
+region = Rect2(320, 32, 80, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wum82"]
+atlas = ExtResource("1_xkocn")
+region = Rect2(400, 32, 80, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7v54"]
+atlas = ExtResource("1_xkocn")
+region = Rect2(480, 32, 80, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0qyqp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjygo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grji5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyjp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02swo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wvvw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wum82")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7v54")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k4wog"]
+radius = 53.0
+height = 162.0
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_t324r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, -46)
+scale = Vector2(5.371, 5)
+sprite_frames = SubResource("SpriteFrames_0qyqp")
+animation = &"stand"
+autoplay = "stand"
+frame_progress = 0.113064
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -38)
+shape = SubResource("CapsuleShape2D_k4wog")
