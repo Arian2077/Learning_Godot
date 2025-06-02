@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b3nbi72mi2shm"]
+[gd_scene load_steps=21 format=3 uid="uid://bk5dqxeyxwu67"]
 
 [ext_resource type="Script" path="res://Scripts/mob.gd" id="1_o7wri"]
 [ext_resource type="Texture2D" uid="uid://dev8l41amou3n" path="res://Assets/Actors/GoldRacoon/SpriteSheet.png" id="2_7a1n0"]
@@ -143,6 +143,7 @@ size = Vector2(33, 31.5)
 
 [node name="mob" type="CharacterBody2D" groups=["Mob"]]
 z_index = 1
+scale = Vector2(2, 2)
 script = ExtResource("1_o7wri")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

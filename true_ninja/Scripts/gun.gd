@@ -19,7 +19,7 @@ func shoot():
 	sword.global_position = $weapon_pivot/shootingPivot.global_position
 	
 	var dir = (get_global_mouse_position() - sword.global_position).normalized()
-	sword.velocity = dir * 600
-	
+	sword.velocity = dir * 1500
+	sword.rotation = dir.angle() + deg_to_rad(90)
 	await get_tree().create_timer(0.2).timeout
 	$weapon_pivot/pistol.visible = false
