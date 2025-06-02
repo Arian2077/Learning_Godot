@@ -47,8 +47,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0sfdw"]
 _data = {
-"RESET": SubResource("Animation_q1io4"),
-"drive": SubResource("Animation_hq04d")
+&"RESET": SubResource("Animation_q1io4"),
+&"drive": SubResource("Animation_hq04d")
 }
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b48t2"]
@@ -4172,7 +4172,7 @@ position = Vector2(-6632, -11334)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="boat/Boat"]
 libraries = {
-"": SubResource("AnimationLibrary_0sfdw")
+&"": SubResource("AnimationLibrary_0sfdw")
 }
 autoplay = "RESET"
 

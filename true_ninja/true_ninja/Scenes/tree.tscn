@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://coi5pkxdmsh6n"]
+
+[ext_resource type="Texture2D" uid="uid://jufix4ar082d" path="res://Assets/Tilesets/TilesetNature.png" id="1_oj7o3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sm4oc"]
+radius = 32.0
+height = 84.0
+
+[node name="Tree" type="AnimatableBody2D"]
+z_index = 2
+position = Vector2(496, 306)
+collision_layer = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(5, 4.912)
+texture = ExtResource("1_oj7o3")
+region_enabled = true
+region_rect = Rect2(47.4358, 288, 49.2429, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 84)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_sm4oc")

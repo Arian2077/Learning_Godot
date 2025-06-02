@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba0b8s4q30rtr"]
+
+[ext_resource type="Texture2D" uid="uid://ci5nlydl55vvw" path="res://Assets/Vehicles/Boat.png" id="1_77woo"]
+[ext_resource type="Script" uid="uid://cgybkq7vlqmw5" path="res://Scripts/boat.gd" id="1_mlsb1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70130"]
+size = Vector2(373.5, 144.5)
+
+[node name="Boat" type="AnimatableBody2D"]
+z_index = 1
+scale = Vector2(2, 2)
+collision_mask = 3
+script = ExtResource("1_mlsb1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(171.8, 77.8)
+scale = Vector2(5, 5)
+texture = ExtResource("1_77woo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(173.25, 73.5)
+shape = SubResource("RectangleShape2D_70130")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr116hmj6c3r1"]
+
+[ext_resource type="Texture2D" uid="uid://cfahrs3he0ite" path="res://Assets/Sai/Sprite.png" id="1_bw4bi"]
+[ext_resource type="Script" path="res://Scripts/gun.gd" id="1_p3w2w"]
+
+[node name="gun" type="Node2D"]
+script = ExtResource("1_p3w2w")
+
+[node name="weapon_pivot" type="Marker2D" parent="."]
+
+[node name="pistol" type="Sprite2D" parent="weapon_pivot"]
+position = Vector2(2.38419e-07, -1.19209e-07)
+scale = Vector2(5, 5)
+texture = ExtResource("1_bw4bi")
+
+[node name="shootingPivot" type="Marker2D" parent="weapon_pivot"]
+position = Vector2(2.10106e-06, 28)
+scale = Vector2(5, 5)

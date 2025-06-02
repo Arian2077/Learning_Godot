@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://b3nbi72mi2shm"]
 
-[ext_resource type="Script" path="res://Scripts/mob.gd" id="1_o7wri"]
+[ext_resource type="Script" uid="uid://brjnhs0jgnrn4" path="res://Scripts/mob.gd" id="1_o7wri"]
 [ext_resource type="Texture2D" uid="uid://dev8l41amou3n" path="res://Assets/Actors/GoldRacoon/SpriteSheet.png" id="2_7a1n0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nl45p"]
