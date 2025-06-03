@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bk5dqxeyxwu67"]
+[gd_scene load_steps=22 format=3 uid="uid://bk5dqxeyxwu67"]
 
 [ext_resource type="Script" path="res://Scripts/mob.gd" id="1_o7wri"]
 [ext_resource type="Texture2D" uid="uid://dev8l41amou3n" path="res://Assets/Actors/GoldRacoon/SpriteSheet.png" id="2_7a1n0"]
@@ -141,6 +141,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_by5wd"]
 size = Vector2(33, 31.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8nqw"]
+size = Vector2(38, 36)
+
 [node name="mob" type="CharacterBody2D" groups=["Mob"]]
 z_index = 1
 scale = Vector2(2, 2)
@@ -151,6 +154,14 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_20w1l")
 animation = &"right"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_by5wd")
+
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_u8nqw")
+
+[node name="DamageTimer" type="Timer" parent="."]

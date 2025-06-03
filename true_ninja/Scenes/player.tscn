@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cewgfighfstl0"]
+[gd_scene load_steps=30 format=3 uid="uid://cewgfighfstl0"]
 
 [ext_resource type="Texture2D" uid="uid://bdsf3huhf51pn" path="res://Assets/Actors/black_ninja/Dead.png" id="1_b50fm"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ua4ut"]
@@ -204,7 +204,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nacw1"]
 size = Vector2(81, 75)
 
-[node name="player" type="CharacterBody2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkybt"]
+
+[node name="player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
 collision_mask = 2
 script = ExtResource("1_ua4ut")
@@ -216,7 +218,7 @@ position_smoothing_enabled = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_21aib")
-animation = &"stand_Down"
+animation = &"death"
 autoplay = "stand_Down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -227,7 +229,42 @@ shape = SubResource("RectangleShape2D_nacw1")
 position = Vector2(35, 5)
 
 [node name="HealthBar" type="Node2D" parent="."]
+z_index = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="HealthBar"]
-offset_right = 4.0
-offset_bottom = 27.0
+offset_left = -84.0
+offset_top = -72.0
+offset_right = 76.0
+offset_bottom = -47.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_fkybt")
+value = 100.0
+show_percentage = false
+
+[node name="GameOverUI" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="GameOverUI"]
+offset_left = 413.0
+offset_top = 235.0
+offset_right = 777.0
+offset_bottom = 390.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverUI/CenterContainer"]
+layout_mode = 2
+
+[node name="GameOverLabel" type="Label" parent="GameOverUI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85098, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_font_sizes/font_size = 67
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="GameOverUI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 37
+text = "Restart"
+flat = true
+
+[connection signal="pressed" from="GameOverUI/CenterContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

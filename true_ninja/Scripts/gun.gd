@@ -8,6 +8,8 @@ func _process(_delta):
 	$weapon_pivot/pistol.visible = false
 
 func _input(event):
+	if get_parent().is_dead:
+		return
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 
