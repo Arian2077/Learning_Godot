@@ -8,15 +8,19 @@ const MIN_X = -5500
 const MAX_X = 2000
 const MIN_Y = -10750
 const MAX_Y = -3000
-
 const MIN_DISTANCE = 200
 const MAX_DISTANCE = 500
+
+var spawn_interval = 2.0              
+var min_spawn_interval = 0.3          
+var spawn_acceleration = 0.05 
 
 @onready var player = get_node("/root/main/player")
 
 func _ready():
 	randomize()
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
+	spawn_timer.wait_time = spawn_interval
 	spawn_timer.start()
 	spawn_check_ray.enabled = true
 	spawn_check_ray.collision_mask = 3
@@ -35,9 +39,14 @@ func _on_spawn_timer_timeout():
 		if spawn_pos.x >= MIN_X and spawn_pos.x <= MAX_X and spawn_pos.y >= MIN_Y and spawn_pos.y <= MAX_Y:
 			if not _is_position_blocked(spawn_pos):
 				spawn_mob(spawn_pos)
+				spawn_interval = max(spawn_interval - spawn_acceleration, min_spawn_interval)
+				spawn_timer.wait_time = spawn_interval
+				spawn_timer.start()
 				return
+				
 
 		tries -= 1
+		
 
 func _is_position_blocked(position: Vector2) -> bool:
 	if not spawn_check_ray:

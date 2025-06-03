@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var damage_area = $DamageArea
 @onready var damage_timer = $DamageTimer
 
+
 var player_in_range = null
 
 func _ready():

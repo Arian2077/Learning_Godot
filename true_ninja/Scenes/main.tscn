@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://daxakohr8vfu1"]
+[gd_scene load_steps=46 format=3 uid="uid://daxakohr8vfu1"]
 
 [ext_resource type="PackedScene" uid="uid://cewgfighfstl0" path="res://Scenes/player.tscn" id="1_8hhj3"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_fdnlq"]
@@ -8,11 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://coi5pkxdmsh6n" path="res://Scenes/tree.tscn" id="3_kmiej"]
 [ext_resource type="Texture2D" uid="uid://d3v27firo7182" path="res://Assets/Tilesets/Pipes.png" id="4_la723"]
 [ext_resource type="Texture2D" uid="uid://ct4et0m72oki3" path="res://Assets/Tilesets/TilesetWater.png" id="5_iwe7p"]
+[ext_resource type="PackedScene" uid="uid://dcgr8802by0lb" path="res://Scenes/mob_2.tscn" id="5_p8mwn"]
 [ext_resource type="Texture2D" uid="uid://b705irvvroxe" path="res://Assets/Tilesets/TilesetHouse.png" id="6_75bn0"]
 [ext_resource type="Texture2D" uid="uid://bu3ewktdkbxme" path="res://Assets/Tilesets/TilesetReliefDetail.png" id="7_ibljc"]
 [ext_resource type="Texture2D" uid="uid://b8njyefy2lf6k" path="res://Assets/Tilesets/TilesetVillageAbandoned.png" id="8_c7uns"]
 [ext_resource type="Texture2D" uid="uid://cth73ro64x1bp" path="res://Assets/Tilesets/skulls.png" id="10_y05fm"]
 [ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="12_6iyac"]
+[ext_resource type="PackedScene" uid="uid://br2ufo54pmm7d" path="res://Scenes/tree_2.tscn" id="13_ccro4"]
+[ext_resource type="AudioStream" uid="uid://brb0kw4b1bcb4" path="res://Assets/Music/BirBirBadabim.ogg" id="14_gxvo0"]
 
 [sub_resource type="Animation" id="Animation_q1io4"]
 length = 15.0
@@ -54,7 +57,7 @@ _data = {
 }
 
 [sub_resource type="Animation" id="Animation_f73a5"]
-length = 0.001
+length = 15.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -62,10 +65,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-8499, -11992)]
+"values": [Vector2(-8578, -11766), Vector2(4738, -11766)]
 }
 
 [sub_resource type="Animation" id="Animation_jlw6s"]
@@ -127,6 +130,82 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_4febm"),
 "new_animation": SubResource("Animation_ngs1u")
+}
+
+[sub_resource type="Animation" id="Animation_k7rb8"]
+resource_name = "new_animation"
+length = 11.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 11),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-6051, -11260), Vector2(5267, -11260)]
+}
+
+[sub_resource type="Animation" id="Animation_dyt2w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-6051, -11260)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gyswr"]
+_data = {
+"RESET": SubResource("Animation_dyt2w"),
+"new_animation": SubResource("Animation_k7rb8")
+}
+
+[sub_resource type="Animation" id="Animation_sx5s5"]
+resource_name = "new_animation"
+length = 14.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 14),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-6850, -11791), Vector2(4739, -11791)]
+}
+
+[sub_resource type="Animation" id="Animation_qjiwi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-6850, -11791)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n5qyi"]
+_data = {
+"RESET": SubResource("Animation_qjiwi"),
+"new_animation": SubResource("Animation_sx5s5")
 }
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b48t2"]
@@ -4270,8 +4349,6 @@ texture = ExtResource("10_y05fm")
 [sub_resource type="TileSet" id="TileSet_qs44b"]
 sources/0 = SubResource("TileSetAtlasSource_tslwx")
 
-[sub_resource type="AudioStream" id="AudioStream_xievl"]
-
 [node name="main" type="Node2D"]
 position = Vector2(-96, -240)
 script = ExtResource("1_fdnlq")
@@ -4289,7 +4366,7 @@ libraries = {
 autoplay = "RESET"
 
 [node name="Boat2" parent="boat" instance=ExtResource("2_ff50e")]
-position = Vector2(-8499, -11992)
+position = Vector2(-8578, -11766)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="boat/Boat2"]
 libraries = {
@@ -4306,6 +4383,24 @@ libraries = {
 }
 autoplay = "new_animation"
 
+[node name="Boat4" parent="boat" instance=ExtResource("2_ff50e")]
+position = Vector2(-6051, -11260)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="boat/Boat4"]
+libraries = {
+"": SubResource("AnimationLibrary_gyswr")
+}
+autoplay = "new_animation"
+
+[node name="Boat5" parent="boat" instance=ExtResource("2_ff50e")]
+position = Vector2(-6850, -11791)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="boat/Boat5"]
+libraries = {
+"": SubResource("AnimationLibrary_n5qyi")
+}
+autoplay = "new_animation"
+
 [node name="player" parent="." instance=ExtResource("1_8hhj3")]
 position = Vector2(-2763, -10098)
 
@@ -4314,13 +4409,16 @@ position = Vector2(-2763, -10098)
 [node name="Mobs" type="Node" parent="."]
 
 [node name="mob" parent="Mobs" instance=ExtResource("2_pmnpi")]
-position = Vector2(-2921, -4593)
+position = Vector2(-2953, -4648)
 
 [node name="mob2" parent="Mobs" instance=ExtResource("2_pmnpi")]
 position = Vector2(-3065, -4748)
 
-[node name="mob3" parent="Mobs" instance=ExtResource("2_pmnpi")]
-position = Vector2(-2762, -4754)
+[node name="mob_2" parent="Mobs" instance=ExtResource("5_p8mwn")]
+position = Vector2(-3056, -4566)
+
+[node name="mob_3" parent="Mobs" instance=ExtResource("5_p8mwn")]
+position = Vector2(-3169, -4644)
 
 [node name="Tiles" type="Node" parent="."]
 
@@ -4370,953 +4468,1023 @@ layer_0/tile_data = PackedInt32Array(-21496028, 1900544, 20, -21430492, 1900544,
 
 [node name="Trees" type="Node" parent="." groups=["Obstacles"]]
 
-[node name="Group one" type="Node" parent="Trees"]
+[node name="tree1" type="Node" parent="Trees"]
 
-[node name="Tree" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Group one" type="Node" parent="Trees/tree1"]
+
+[node name="Tree" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-1222, -10447)
 
-[node name="Tree2" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree2" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-1677, -10209)
 
-[node name="Tree3" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree3" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-2201, -10532)
 
-[node name="Tree5" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree5" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-526, -10352)
 
-[node name="Tree4" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree4" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(169, -10317)
 
-[node name="Tree6" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree6" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-2236, -10200)
 
-[node name="Tree7" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
-position = Vector2(-388, -10604)
+[node name="Tree7" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
+position = Vector2(-430, -10659)
 
-[node name="Tree8" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree8" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-1276, -9949)
 
-[node name="Tree9" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree9" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(1709, -9918)
 
-[node name="Tree10" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree10" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(1802, -10658)
 
-[node name="Tree11" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree11" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(577, -9903)
 
-[node name="Tree12" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree12" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-484, -9944)
 
-[node name="Tree13" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree13" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-924, -10703)
 
-[node name="Tree14" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree14" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(475, -10622)
 
-[node name="Tree15" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree15" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-2902, -10599)
 
-[node name="Tree16" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree16" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-5170, -9392)
 
-[node name="Tree17" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree17" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-5533, -9993)
 
-[node name="Tree18" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree18" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-4449, -9362)
 
-[node name="Tree19" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree19" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-4307, -10756)
 
-[node name="Tree20" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree20" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-5505, -9634)
 
-[node name="Tree21" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree21" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-3459, -10676)
 
-[node name="Tree22" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree22" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-4451, -8980)
 
-[node name="Tree23" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree23" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(1010, -8700)
 
-[node name="Tree24" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree24" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(596, -9269)
 
-[node name="Tree25" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree25" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-2458, -8978)
 
-[node name="Tree26" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree26" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-3933, -8741)
 
-[node name="Tree27" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree27" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-2973, -8183)
 
-[node name="Tree28" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree28" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-3278, -8959)
 
-[node name="Tree29" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree29" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(369, -8855)
 
-[node name="Tree30" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree30" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-1189, -8824)
 
-[node name="Tree31" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree31" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-138, -9200)
 
-[node name="Tree32" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree32" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(-1643, -9182)
 
-[node name="Tree33" parent="Trees/Group one" instance=ExtResource("3_kmiej")]
+[node name="Tree33" parent="Trees/tree1/Group one" instance=ExtResource("3_kmiej")]
 position = Vector2(415, -8359)
 
-[node name="Arena" type="Node" parent="Trees"]
+[node name="Arena" type="Node" parent="Trees/tree1"]
 
-[node name="Up" type="Node" parent="Trees/Arena"]
+[node name="Up" type="Node" parent="Trees/tree1/Arena"]
 
-[node name="Tree34" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree34" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-1998, -7369)
 
-[node name="Tree35" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree35" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-2668, -7356)
 
-[node name="Tree36" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree36" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-2663, -7133)
 
-[node name="Tree37" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree37" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-2015, -7144)
 
-[node name="Tree39" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree39" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-2657, -6923)
 
-[node name="Tree40" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree40" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-2013, -6920)
 
-[node name="Tree41" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree41" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-2649, -6704)
 
-[node name="Tree45" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree45" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-2012, -6711)
 
-[node name="Tree46" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree46" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-2007, -6494)
 
-[node name="Tree48" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree48" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-2624, -6473)
 
-[node name="Tree38" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree38" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-1686, -7373)
 
-[node name="Tree42" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree42" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-2989, -7349)
 
-[node name="Tree43" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree43" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-2984, -7126)
 
-[node name="Tree44" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree44" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-1695, -7137)
 
-[node name="Tree47" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree47" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-2978, -6916)
 
-[node name="Tree49" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree49" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-1693, -6913)
 
-[node name="Tree50" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree50" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-2970, -6697)
 
-[node name="Tree51" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree51" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-1692, -6704)
 
-[node name="Tree52" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree52" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-1687, -6487)
 
-[node name="Tree53" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree53" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-2945, -6466)
 
-[node name="Tree54" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree54" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-1375, -7356)
 
-[node name="Tree55" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree55" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-3284, -7356)
 
-[node name="Tree56" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree56" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-3279, -7133)
 
-[node name="Tree57" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree57" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-1392, -7131)
 
-[node name="Tree58" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree58" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-3273, -6923)
 
-[node name="Tree59" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree59" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-1390, -6907)
 
-[node name="Tree60" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree60" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-3265, -6704)
 
-[node name="Tree61" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree61" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-1389, -6698)
 
-[node name="Tree62" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree62" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-1384, -6481)
 
-[node name="Tree63" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree63" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-3240, -6473)
 
-[node name="Tree64" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree64" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-1063, -7354)
 
-[node name="Tree65" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree65" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-3605, -7349)
 
-[node name="Tree66" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree66" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-3600, -7126)
 
-[node name="Tree67" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree67" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-1072, -7124)
 
-[node name="Tree68" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree68" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-3594, -6916)
 
-[node name="Tree69" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree69" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-1070, -6900)
 
-[node name="Tree70" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree70" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-3586, -6697)
 
-[node name="Tree71" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree71" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-1069, -6691)
 
-[node name="Tree72" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree72" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-1064, -6474)
 
-[node name="Tree73" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree73" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-3561, -6466)
 
-[node name="Tree75" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree75" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(151, -7343)
 
-[node name="Tree76" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree76" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(156, -7120)
 
-[node name="Tree78" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree78" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(162, -6910)
 
-[node name="Tree80" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree80" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(170, -6691)
 
-[node name="Tree83" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree83" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(175, -6480)
 
-[node name="Tree85" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree85" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-170, -7336)
 
-[node name="Tree86" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree86" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-165, -7113)
 
-[node name="Tree88" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree88" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-159, -6903)
 
-[node name="Tree90" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree90" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-151, -6684)
 
-[node name="Tree93" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree93" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-146, -6473)
 
-[node name="Tree95" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree95" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-465, -7343)
 
-[node name="Tree96" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree96" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-460, -7120)
 
-[node name="Tree98" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree98" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-454, -6910)
 
-[node name="Tree100" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree100" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-446, -6691)
 
-[node name="Tree103" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree103" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-441, -6480)
 
-[node name="Tree105" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree105" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-786, -7336)
 
-[node name="Tree106" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree106" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-781, -7113)
 
-[node name="Tree108" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree108" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-775, -6903)
 
-[node name="Tree110" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree110" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-767, -6684)
 
-[node name="Tree113" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree113" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-762, -6473)
 
-[node name="Tree77" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree77" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-4678, -7328)
 
-[node name="Tree79" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree79" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-4672, -7085)
 
-[node name="Tree81" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree81" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-4684, -6833)
 
-[node name="Tree82" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree82" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-4659, -6588)
 
-[node name="Tree87" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree87" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-4992, -7328)
 
-[node name="Tree89" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree89" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-4976, -7089)
 
-[node name="Tree91" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree91" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-4973, -6842)
 
-[node name="Tree92" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree92" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-4973, -6588)
 
-[node name="Tree97" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree97" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-5304, -7320)
 
-[node name="Tree99" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree99" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-5288, -7053)
 
-[node name="Tree101" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree101" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-5280, -6824)
 
-[node name="Tree102" parent="Trees/Arena/Up" instance=ExtResource("3_kmiej")]
+[node name="Tree102" parent="Trees/tree1/Arena/Up" instance=ExtResource("3_kmiej")]
 position = Vector2(-5275, -6561)
 
-[node name="Right" type="Node" parent="Trees/Arena"]
+[node name="Right" type="Node" parent="Trees/tree1/Arena"]
 
-[node name="Tree74" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree74" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-748, -6233)
 
-[node name="Tree77" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree77" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-765, -6008)
 
-[node name="Tree79" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree79" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-763, -5784)
 
-[node name="Tree81" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree81" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-762, -5575)
 
-[node name="Tree82" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree82" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-757, -5358)
 
-[node name="Tree84" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree84" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-436, -6237)
 
-[node name="Tree87" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree87" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-445, -6001)
 
-[node name="Tree89" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree89" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-443, -5777)
 
-[node name="Tree91" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree91" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-442, -5568)
 
-[node name="Tree92" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree92" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-437, -5351)
 
-[node name="Tree94" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree94" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-125, -6220)
 
-[node name="Tree97" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree97" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-142, -5995)
 
-[node name="Tree99" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree99" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-140, -5771)
 
-[node name="Tree101" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree101" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-139, -5562)
 
-[node name="Tree102" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree102" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-134, -5345)
 
-[node name="Tree104" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree104" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(187, -6218)
 
-[node name="Tree107" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree107" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(178, -5988)
 
-[node name="Tree109" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree109" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(180, -5764)
 
-[node name="Tree111" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree111" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(181, -5555)
 
-[node name="Tree112" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree112" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(186, -5338)
 
-[node name="Tree115" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree115" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(187, -5126)
 
-[node name="Tree116" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree116" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(192, -4903)
 
-[node name="Tree118" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree118" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(198, -4693)
 
-[node name="Tree120" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree120" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(206, -4474)
 
-[node name="Tree123" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree123" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(211, -4263)
 
-[node name="Tree125" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree125" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-134, -5119)
 
-[node name="Tree126" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree126" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-129, -4896)
 
-[node name="Tree128" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree128" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-123, -4686)
 
-[node name="Tree130" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree130" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-115, -4467)
 
-[node name="Tree133" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree133" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-110, -4256)
 
-[node name="Tree135" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree135" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-429, -5126)
 
-[node name="Tree136" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree136" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-424, -4903)
 
-[node name="Tree138" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree138" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-418, -4693)
 
-[node name="Tree140" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree140" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-410, -4474)
 
-[node name="Tree143" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree143" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-405, -4263)
 
-[node name="Tree145" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree145" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-750, -5119)
 
-[node name="Tree146" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree146" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-745, -4896)
 
-[node name="Tree148" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree148" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-739, -4686)
 
-[node name="Tree150" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree150" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-731, -4467)
 
-[node name="Tree153" parent="Trees/Arena/Right" instance=ExtResource("3_kmiej")]
+[node name="Tree153" parent="Trees/tree1/Arena/Right" instance=ExtResource("3_kmiej")]
 position = Vector2(-726, -4256)
 
-[node name="Down" type="Node" parent="Trees/Arena"]
+[node name="Down" type="Node" parent="Trees/tree1/Arena"]
 
-[node name="Tree114" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree114" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-712, -4016)
 
-[node name="Tree117" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree117" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-729, -3791)
 
-[node name="Tree119" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree119" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-727, -3567)
 
-[node name="Tree121" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree121" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-726, -3358)
 
-[node name="Tree122" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree122" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-721, -3141)
 
-[node name="Tree124" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree124" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-400, -4020)
 
-[node name="Tree127" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree127" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-409, -3784)
 
-[node name="Tree129" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree129" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-407, -3560)
 
-[node name="Tree131" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree131" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-406, -3351)
 
-[node name="Tree132" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree132" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-401, -3134)
 
-[node name="Tree134" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree134" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-89, -4003)
 
-[node name="Tree137" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree137" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-106, -3778)
 
-[node name="Tree139" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree139" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-104, -3554)
 
-[node name="Tree141" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree141" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-103, -3345)
 
-[node name="Tree142" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree142" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-98, -3128)
 
-[node name="Tree144" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree144" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(223, -4001)
 
-[node name="Tree147" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree147" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(214, -3771)
 
-[node name="Tree149" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree149" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(216, -3547)
 
-[node name="Tree151" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree151" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(217, -3338)
 
-[node name="Tree152" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree152" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(222, -3121)
 
-[node name="Tree154" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree154" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-1935, -4076)
 
-[node name="Tree155" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree155" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-1952, -3851)
 
-[node name="Tree156" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree156" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-1950, -3627)
 
-[node name="Tree157" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree157" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-1949, -3418)
 
-[node name="Tree158" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree158" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-1944, -3201)
 
-[node name="Tree159" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree159" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-1623, -4080)
 
-[node name="Tree160" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree160" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-1632, -3844)
 
-[node name="Tree161" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree161" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-1630, -3620)
 
-[node name="Tree162" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree162" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-1629, -3411)
 
-[node name="Tree163" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree163" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-1624, -3194)
 
-[node name="Tree164" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree164" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-1312, -4063)
 
-[node name="Tree165" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree165" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-1329, -3838)
 
-[node name="Tree166" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree166" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-1327, -3614)
 
-[node name="Tree167" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree167" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-1326, -3405)
 
-[node name="Tree168" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree168" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-1321, -3188)
 
-[node name="Tree169" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree169" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-1000, -4061)
 
-[node name="Tree170" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree170" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-1009, -3831)
 
-[node name="Tree171" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree171" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-1007, -3607)
 
-[node name="Tree172" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree172" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-1006, -3398)
 
-[node name="Tree173" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree173" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-1001, -3181)
 
-[node name="Tree115" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree115" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-3204, -4074)
 
-[node name="Tree118" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree118" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-3221, -3849)
 
-[node name="Tree120" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree120" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-3219, -3625)
 
-[node name="Tree123" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree123" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-3218, -3416)
 
-[node name="Tree125" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree125" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-3213, -3199)
 
-[node name="Tree126" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree126" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-2852, -4091)
 
-[node name="Tree128" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree128" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-2861, -3855)
 
-[node name="Tree130" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree130" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-2859, -3631)
 
-[node name="Tree133" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree133" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-2858, -3422)
 
-[node name="Tree135" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree135" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-2853, -3205)
 
-[node name="Tree136" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree136" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-2541, -4074)
 
-[node name="Tree138" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree138" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-2558, -3849)
 
-[node name="Tree140" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree140" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-2556, -3625)
 
-[node name="Tree143" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree143" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-2555, -3416)
 
-[node name="Tree145" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree145" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-2550, -3199)
 
-[node name="Tree146" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree146" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-2229, -4072)
 
-[node name="Tree148" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree148" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-2238, -3842)
 
-[node name="Tree150" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree150" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-2236, -3618)
 
-[node name="Tree153" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree153" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-2235, -3409)
 
-[node name="Tree174" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree174" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-2230, -3192)
 
-[node name="Tree175" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree175" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-5274, -4026)
 
-[node name="Tree176" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree176" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-5291, -3801)
 
-[node name="Tree177" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree177" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-5289, -3577)
 
-[node name="Tree178" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree178" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-5288, -3368)
 
-[node name="Tree179" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree179" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-5283, -3151)
 
-[node name="Tree180" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree180" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-4942, -4030)
 
-[node name="Tree181" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree181" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-4951, -3794)
 
-[node name="Tree182" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree182" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-4949, -3570)
 
-[node name="Tree183" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree183" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-4948, -3361)
 
-[node name="Tree184" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree184" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-4943, -3144)
 
-[node name="Tree185" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree185" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-4641, -4003)
 
-[node name="Tree186" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree186" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-4658, -3778)
 
-[node name="Tree187" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree187" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-4656, -3554)
 
-[node name="Tree188" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree188" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-4655, -3345)
 
-[node name="Tree189" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree189" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-4650, -3128)
 
-[node name="Tree190" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree190" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-3526, -4015)
 
-[node name="Tree191" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree191" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-3535, -3785)
 
-[node name="Tree192" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree192" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-3533, -3561)
 
-[node name="Tree193" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree193" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-3532, -3352)
 
-[node name="Tree194" parent="Trees/Arena/Down" instance=ExtResource("3_kmiej")]
+[node name="Tree194" parent="Trees/tree1/Arena/Down" instance=ExtResource("3_kmiej")]
 position = Vector2(-3527, -3135)
 
-[node name="Left" type="Node" parent="Trees/Arena"]
+[node name="Left" type="Node" parent="Trees/tree1/Arena"]
 
-[node name="Tree175" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree175" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-5291, -5163)
 
-[node name="Tree176" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree176" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-5271, -4928)
 
-[node name="Tree177" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree177" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-5269, -4704)
 
-[node name="Tree178" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree178" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-5268, -4495)
 
-[node name="Tree179" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree179" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-5263, -4278)
 
-[node name="Tree180" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree180" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4942, -5157)
 
-[node name="Tree181" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree181" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4951, -4921)
 
-[node name="Tree182" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree182" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4949, -4697)
 
-[node name="Tree183" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree183" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4948, -4488)
 
-[node name="Tree184" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree184" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4943, -4271)
 
-[node name="Tree185" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree185" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4631, -5140)
 
-[node name="Tree186" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree186" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4648, -4915)
 
-[node name="Tree187" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree187" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4646, -4691)
 
-[node name="Tree188" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree188" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4645, -4482)
 
-[node name="Tree189" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree189" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4640, -4265)
 
-[node name="Tree190" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree190" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-5287, -6322)
 
-[node name="Tree191" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree191" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-5304, -6097)
 
-[node name="Tree192" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree192" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-5302, -5873)
 
-[node name="Tree193" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree193" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-5301, -5664)
 
-[node name="Tree194" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree194" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-5296, -5447)
 
-[node name="Tree195" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree195" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4975, -6326)
 
-[node name="Tree196" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree196" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4984, -6090)
 
-[node name="Tree197" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree197" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4982, -5866)
 
-[node name="Tree198" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree198" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4981, -5657)
 
-[node name="Tree199" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree199" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4976, -5440)
 
-[node name="Tree200" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree200" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4664, -6309)
 
-[node name="Tree201" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree201" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4681, -6084)
 
-[node name="Tree202" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree202" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4679, -5860)
 
-[node name="Tree203" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree203" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4678, -5651)
 
-[node name="Tree204" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree204" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4673, -5434)
 
-[node name="Tree77" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree77" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-3855, -7336)
 
-[node name="Tree79" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree79" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-3844, -7088)
 
-[node name="Tree81" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree81" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-3827, -6855)
 
-[node name="Tree82" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree82" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-3831, -6596)
 
-[node name="Tree87" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree87" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4114, -7336)
 
-[node name="Tree89" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree89" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4108, -7083)
 
-[node name="Tree91" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree91" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4114, -6841)
 
-[node name="Tree92" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree92" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4095, -6596)
 
-[node name="Tree97" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree97" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4411, -7333)
 
-[node name="Tree99" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree99" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4400, -7075)
 
-[node name="Tree101" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree101" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4397, -6823)
 
-[node name="Tree102" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree102" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4397, -6569)
 
-[node name="Tree205" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree205" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4396, -4034)
 
-[node name="Tree206" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree206" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4413, -3809)
 
-[node name="Tree207" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree207" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4411, -3585)
 
-[node name="Tree208" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree208" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4410, -3376)
 
-[node name="Tree209" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree209" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4405, -3159)
 
-[node name="Tree210" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree210" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4064, -4038)
 
-[node name="Tree211" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree211" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4073, -3802)
 
-[node name="Tree212" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree212" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4071, -3578)
 
-[node name="Tree213" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree213" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4070, -3369)
 
-[node name="Tree214" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree214" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4065, -3152)
 
-[node name="Tree215" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree215" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-3813, -4011)
 
-[node name="Tree216" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree216" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-3830, -3786)
 
-[node name="Tree217" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree217" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-3828, -3562)
 
-[node name="Tree218" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree218" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-3827, -3353)
 
-[node name="Tree219" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree219" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-3822, -3136)
 
-[node name="Tree220" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree220" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4413, -5171)
 
-[node name="Tree221" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree221" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4393, -4936)
 
-[node name="Tree222" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree222" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4391, -4712)
 
-[node name="Tree223" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree223" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4390, -4503)
 
-[node name="Tree224" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree224" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4385, -4286)
 
-[node name="Tree225" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree225" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4107, -5179)
 
-[node name="Tree226" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree226" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4073, -4929)
 
-[node name="Tree227" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree227" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4071, -4705)
 
-[node name="Tree228" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree228" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4070, -4496)
 
-[node name="Tree229" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree229" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4065, -4279)
 
-[node name="Tree230" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree230" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-3832, -5169)
 
-[node name="Tree231" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree231" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-3820, -4923)
 
-[node name="Tree232" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree232" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-3818, -4699)
 
-[node name="Tree233" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree233" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-3825, -4490)
 
-[node name="Tree234" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree234" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-3812, -4273)
 
-[node name="Tree235" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree235" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4409, -6330)
 
-[node name="Tree236" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree236" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4426, -6105)
 
-[node name="Tree237" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree237" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4424, -5881)
 
-[node name="Tree238" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree238" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4423, -5672)
 
-[node name="Tree239" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree239" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4418, -5455)
 
-[node name="Tree240" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree240" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4097, -6334)
 
-[node name="Tree241" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree241" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4106, -6098)
 
-[node name="Tree242" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree242" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4104, -5874)
 
-[node name="Tree243" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree243" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4103, -5665)
 
-[node name="Tree244" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree244" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-4098, -5448)
 
-[node name="Tree245" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree245" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-3836, -6317)
 
-[node name="Tree246" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree246" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-3853, -6092)
 
-[node name="Tree247" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree247" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-3851, -5868)
 
-[node name="Tree248" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree248" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-3850, -5659)
 
-[node name="Tree249" parent="Trees/Arena/Left" instance=ExtResource("3_kmiej")]
+[node name="Tree249" parent="Trees/tree1/Arena/Left" instance=ExtResource("3_kmiej")]
 position = Vector2(-3845, -5442)
+
+[node name="tree2" type="Node" parent="Trees"]
+
+[node name="Tree2" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(-4885, -8309)
+
+[node name="Tree3" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(952, -10078)
+
+[node name="Tree4" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(880, -10554)
+
+[node name="Tree5" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(-3348, -9322)
+
+[node name="Tree6" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(-872, -10441)
+
+[node name="Tree7" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(-4076, -9470)
+
+[node name="Tree8" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(-1961, -9466)
+
+[node name="Tree9" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(-2308, -8258)
+
+[node name="Tree10" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(-3876, -8173)
+
+[node name="Tree11" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(-1537, -8737)
+
+[node name="Tree12" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(-2736, -8804)
+
+[node name="Tree13" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(-1354, -10746)
+
+[node name="Tree14" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(1513, -8255)
+
+[node name="Tree15" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(1971, -10127)
+
+[node name="Tree16" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(853, -9013)
+
+[node name="Tree17" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(-5379, -9845)
+
+[node name="Tree18" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(-3187, -10653)
+
+[node name="Tree19" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(-1154, -7934)
+
+[node name="Tree20" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(-5590, -8101)
+
+[node name="Tree21" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(-5543, -7671)
+
+[node name="Tree22" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(1851, -7863)
+
+[node name="Tree23" parent="Trees/tree2" instance=ExtResource("13_ccro4")]
+position = Vector2(-1484, -7988)
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource("12_6iyac")
@@ -5327,5 +5495,6 @@ mob_scene = ExtResource("2_pmnpi")
 [node name="SpawnCheckRay" type="RayCast2D" parent="."]
 collision_mask = 3
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStream_xievl")
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_gxvo0")
+autoplay = true

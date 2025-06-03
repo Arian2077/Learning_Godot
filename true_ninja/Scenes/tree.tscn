@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://jufix4ar082d" path="res://Assets/Tilesets/TilesetNature.png" id="1_oj7o3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sm4oc"]
-radius = 32.0
-height = 84.0
+radius = 28.0
+height = 80.0
 
 [node name="Tree" type="AnimatableBody2D"]
 z_index = 2
