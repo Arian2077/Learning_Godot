@@ -132,6 +132,21 @@ _data = {
 "new_animation": SubResource("Animation_ngs1u")
 }
 
+[sub_resource type="Animation" id="Animation_dyt2w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-6051, -11260)]
+}
+
 [sub_resource type="Animation" id="Animation_k7rb8"]
 resource_name = "new_animation"
 length = 11.0
@@ -149,7 +164,13 @@ tracks/0/keys = {
 "values": [Vector2(-6051, -11260), Vector2(5267, -11260)]
 }
 
-[sub_resource type="Animation" id="Animation_dyt2w"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gyswr"]
+_data = {
+"RESET": SubResource("Animation_dyt2w"),
+"new_animation": SubResource("Animation_k7rb8")
+}
+
+[sub_resource type="Animation" id="Animation_qjiwi"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -161,13 +182,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-6051, -11260)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_gyswr"]
-_data = {
-"RESET": SubResource("Animation_dyt2w"),
-"new_animation": SubResource("Animation_k7rb8")
+"values": [Vector2(-6850, -11791)]
 }
 
 [sub_resource type="Animation" id="Animation_sx5s5"]
@@ -185,21 +200,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-6850, -11791), Vector2(4739, -11791)]
-}
-
-[sub_resource type="Animation" id="Animation_qjiwi"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-6850, -11791)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n5qyi"]
@@ -5488,9 +5488,15 @@ position = Vector2(-1484, -7988)
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource("12_6iyac")
-mob_scene = ExtResource("2_pmnpi")
+mob_scene = ExtResource("5_p8mwn")
 
 [node name="SpawnTimer" type="Timer" parent="EnemySpawner"]
+
+[node name="EnemySpawner2" type="Node2D" parent="."]
+script = ExtResource("12_6iyac")
+mob_scene = ExtResource("2_pmnpi")
+
+[node name="SpawnTimer" type="Timer" parent="EnemySpawner2"]
 
 [node name="SpawnCheckRay" type="RayCast2D" parent="."]
 collision_mask = 3
